@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="深入理解Java多态性 Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。">
+<meta name="description" content="Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。  Java多态性什么是Java的多态性，引用网上的一句总结就是：  事物在运行过程中存在不同的状态。  多态的存在有三个前提：   要有继承关系 子类要重写(overwrite)父类的方法 父类引用指向子类对象">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Java的多态">
 <meta property="og:url" content="http://yoursite.com/深入理解Java的多态/index.html">
 <meta property="og:site_name" content="ZSY&#39;s blog">
-<meta property="og:description" content="深入理解Java多态性 Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。">
+<meta property="og:description" content="Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。  Java多态性什么是Java的多态性，引用网上的一句总结就是：  事物在运行过程中存在不同的状态。  多态的存在有三个前提：   要有继承关系 子类要重写(overwrite)父类的方法 父类引用指向子类对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T14:15:09.609Z">
+<meta property="og:updated_time" content="2018-04-11T15:39:32.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java的多态">
-<meta name="twitter:description" content="深入理解Java多态性 Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。">
+<meta name="twitter:description" content="Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。  Java多态性什么是Java的多态性，引用网上的一句总结就是：  事物在运行过程中存在不同的状态。  多态的存在有三个前提：   要有继承关系 子类要重写(overwrite)父类的方法 父类引用指向子类对象">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -362,8 +362,7 @@
       
 
       
-        <h1 id="深入理解Java多态性"><a href="#深入理解Java多态性" class="headerlink" title="深入理解Java多态性"></a>深入理解Java多态性</h1><hr>
-<p>Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。<br><a id="more"></a></p>
+        <p>Java作为一个面向对象的语言，封装、继承和多态是三大特性。封装和继承比较好理解，并且Java摈弃了C++中的多重继承也就更加方便理解了。这里帮助自己回顾一下对于多态的理解。</p>
 <hr>
 <h2 id="Java多态性"><a href="#Java多态性" class="headerlink" title="Java多态性"></a>Java多态性</h2><p>什么是Java的多态性，引用网上的一句总结就是：</p>
 <blockquote>
@@ -377,6 +376,7 @@
 <li>父类引用指向子类对象</li>
 </ul>
 </blockquote>
+<a id="more"></a>
 <hr>
 <h2 id="一个栗子"><a href="#一个栗子" class="headerlink" title="一个栗子"></a>一个栗子</h2><h3 id="父类Animal"><a href="#父类Animal" class="headerlink" title="父类Animal"></a>父类Animal</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"animal eat."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"animal sleep."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"animal run."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="子类Cat"><a href="#子类Cat" class="headerlink" title="子类Cat"></a>子类Cat</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重写的方法最好写上@Override</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"cat eat."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"cat sleep."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">catchMouse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"cat catches mouse."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -571,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深入理解Java多态性"><span class="nav-number">1.</span> <span class="nav-text">深入理解Java多态性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java多态性"><span class="nav-number">1.1.</span> <span class="nav-text">Java多态性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个栗子"><span class="nav-number">1.2.</span> <span class="nav-text">一个栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父类Animal"><span class="nav-number">1.2.1.</span> <span class="nav-text">父类Animal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类Cat"><span class="nav-number">1.2.2.</span> <span class="nav-text">子类Cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试工程"><span class="nav-number">1.2.3.</span> <span class="nav-text">测试工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入结果"><span class="nav-number">1.2.4.</span> <span class="nav-text">输入结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的特点"><span class="nav-number">1.2.5.</span> <span class="nav-text">多态的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二个栗子"><span class="nav-number">1.3.</span> <span class="nav-text">第二个栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结果如下"><span class="nav-number">1.3.1.</span> <span class="nav-text">结果如下</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java多态性"><span class="nav-number">1.</span> <span class="nav-text">Java多态性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个栗子"><span class="nav-number">2.</span> <span class="nav-text">一个栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父类Animal"><span class="nav-number">2.1.</span> <span class="nav-text">父类Animal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子类Cat"><span class="nav-number">2.2.</span> <span class="nav-text">子类Cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试工程"><span class="nav-number">2.3.</span> <span class="nav-text">测试工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入结果"><span class="nav-number">2.4.</span> <span class="nav-text">输入结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的特点"><span class="nav-number">2.5.</span> <span class="nav-text">多态的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二个栗子"><span class="nav-number">3.</span> <span class="nav-text">第二个栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结果如下"><span class="nav-number">3.1.</span> <span class="nav-text">结果如下</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -609,7 +609,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
