@@ -366,15 +366,6 @@
       
         
           <p>Spring MVC框架是SpringFrameWork的一部分，用于Java Web应用程序的开发，基于模型-视图-控制器（Model-View-Controller）的模式实现了功能层次的分离与解耦。</p>
-<hr>
-<h2 id="Spring-MVC起步"><a href="#Spring-MVC起步" class="headerlink" title="Spring MVC起步"></a>Spring MVC起步</h2><h3 id="Spirng-MVC的请求流程"><a href="#Spirng-MVC的请求流程" class="headerlink" title="Spirng MVC的请求流程"></a>Spirng MVC的请求流程</h3><ol>
-<li>请求离开浏览器，第一站是Spring的DispatcherServlet。DispatcherServlet是接收所有请求的前端控制器Servlet。</li>
-<li>DispatcherServlet查询一个或多个处理器映射（handler mapping），来决定请求的下一站去哪里（交给那个控制器）。处理器映射根据请求的URL信息来进行决策。</li>
-<li>确定转发给哪个控制器之后，DispatcherServlet会将请求转发给选中的控制器。</li>
-<li>控制器执行处理逻辑，将请求、模型（产生的数据信息）和视图（数据信息友好方式展示）名再转发给Dispatcher。</li>
-<li>DispatcherServlet使用视图解析器（view resolver）来讲逻辑视图名匹配为一个特定的视图实现。</li>
-<li>DispatcherServlet知道由哪个视图渲染结果，就交付模型数据。</li>
-<li>视图使用模型数据渲染输出，最终将输出通过相应对象传递给客户端。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/《Spring实战》阅读笔记——第五章（1）/#more" rel="contents">
@@ -771,7 +762,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
