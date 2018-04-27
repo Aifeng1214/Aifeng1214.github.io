@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring MVC框架是SpringFrameWork的一部分，用于Java Web应用程序的开发，基于模型-视图-控制器（Model-View-Controller）的模式实现了功能层次的分离与解耦。">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Spring实战》阅读笔记——第五章(1)">
+<meta property="og:url" content="http://yoursite.com/《Spring实战》阅读笔记——第五章(1)/index.html">
+<meta property="og:site_name" content="ZSY&#39;s blog">
+<meta property="og:description" content="Spring MVC框架是SpringFrameWork的一部分，用于Java Web应用程序的开发，基于模型-视图-控制器（Model-View-Controller）的模式实现了功能层次的分离与解耦。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-27T15:48:37.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Spring实战》阅读笔记——第五章(1)">
+<meta name="twitter:description" content="Spring MVC框架是SpringFrameWork的一部分，用于Java Web应用程序的开发，基于模型-视图-控制器（Model-View-Controller）的模式实现了功能层次的分离与解耦。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/《Spring实战》阅读笔记——第五章(1)/"/>
+
+
+
+
+
+  <title>《Spring实战》阅读笔记——第五章(1) | ZSY's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZSY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/《Spring实战》阅读笔记——第五章(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZSY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Shiba.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZSY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《Spring实战》阅读笔记——第五章(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-27T00:35:15+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Spring MVC框架是SpringFrameWork的一部分，用于Java Web应用程序的开发，基于模型-视图-控制器（Model-View-Controller）的模式实现了功能层次的分离与解耦。<br><a id="more"></a></p>
+<hr>
+<h2 id="Spring-MVC起步"><a href="#Spring-MVC起步" class="headerlink" title="Spring MVC起步"></a>Spring MVC起步</h2><h3 id="Spirng-MVC的请求流程"><a href="#Spirng-MVC的请求流程" class="headerlink" title="Spirng MVC的请求流程"></a>Spirng MVC的请求流程</h3><ol>
+<li>请求离开浏览器，第一站是Spring的DispatcherServlet。DispatcherServlet是接收所有请求的前端控制器Servlet。</li>
+<li>DispatcherServlet查询一个或多个处理器映射（handler mapping），来决定请求的下一站去哪里（交给那个控制器）。处理器映射根据请求的URL信息来进行决策。</li>
+<li>确定转发给哪个控制器之后，DispatcherServlet会将请求转发给选中的控制器。</li>
+<li>控制器执行处理逻辑，将请求、模型（产生的数据信息）和视图（数据信息友好方式展示）名再转发给Dispatcher。</li>
+<li>DispatcherServlet使用视图解析器（view resolver）来讲逻辑视图名匹配为一个特定的视图实现。</li>
+<li>DispatcherServlet知道由哪个视图渲染结果，就交付模型数据。</li>
+<li>视图使用模型数据渲染输出，最终将输出通过相应对象传递给客户端。</li>
+</ol>
+<h3 id="搭建Spring-MVC"><a href="#搭建Spring-MVC" class="headerlink" title="搭建Spring MVC"></a>搭建Spring MVC</h3><p>DispatcherServlet是Spring MVC的核心。其配置方式有两种：</p>
+<ul>
+<li>在web.xml中配置</li>
+<li>Spring 3.1之后可以使用Java-based Configuration进行配置</li>
+</ul>
+<p>这里使用Java配置的方式，尽量少用配置文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置DispatcherServlet</span></span><br><span class="line"><span class="keyword">package</span> spittr.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpittrWebAppInitializer</span> <span class="keyword">extends</span> <span class="title">AbstractAnnotationConfigDispatcherServletInitializer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getRootConfigClasses()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Class&lt;?&gt;[]&#123;RootConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getServletConfigClasses()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Class&lt;?&gt;[]&#123;WebConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> String[] getServletMappings()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;<span class="string">"/"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="SpittrWebAppInitializer类的解析"><a href="#SpittrWebAppInitializer类的解析" class="headerlink" title="SpittrWebAppInitializer类的解析"></a>SpittrWebAppInitializer类的解析</h4><ul>
+<li>扩展AbstractAnnotationConfigDispatcherServletInitializer的任意类都会自动配置DispatcherServlet和Spring应用上下文，Spring应用上下文会位于应用程序的Servlet上下文之中。</li>
+</ul>
+<blockquote>
+<p>Spring容器并不是只有一个。Spring自带了多个容器的实现，可以归为两种不同的类型。<strong>Bean工厂</strong>（由org.springframekwork.beans.factory.beanFactory接口定义）是最简单的容器，提供基本的DI支持。<strong>应用上下文</strong>（由org.springframekwork.context.ApplicationContext接口定义）…</p>
+</blockquote>
+<ul>
+<li><p>getServletMappings()<br>将一个或多个路径映射到DispatcherServlet上。</p>
+</li>
+<li><p>getServletConfigClasses()<br>WebConfig配置类中主要是内容是启用组件扫描，配置视图解析器，配置静态资源的处理。<br>当DispatcherServlet启动的时候，它会加载Spring应用上下文，并加载配置文件或配置类中所声明的bean。getServletConfigClasses方法返回的带有<strong>@Configuration</strong>注解的类都会用来定义DispatcherServlet应用上下文中的bean；这加载了WebConfig配置类中的bean。</p>
+</li>
+<li><p>getRootConfigClasses()<br>RootConfig配置类加载的是驱动应用后端的中间层和数据层组件，是父上下文。<br>getRootConfigClasses方法返回的带有<strong>@Configuration</strong>注解的类都会用来配置ContextLoaderListener创建的应用上下文中的bean。</p>
+</li>
+<li><p>两个应用上下文<br><a href="https://stackoverflow.com/questions/35258758/getservletconfigclasses-vs-getrootconfigclasses-when-extending-abstractannot" target="_blank" rel="noopener">Stack Overflow上关于这个配置之间的说明</a></p>
+</li>
+</ul>
+<h3 id="启动Spring-MVC"><a href="#启动Spring-MVC" class="headerlink" title="启动Spring MVC"></a>启动Spring MVC</h3> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"spittr.web"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ViewResolver <span class="title">viewResolver</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            InternalResourceViewResolver resolver = <span class="keyword">new</span> InternalResourceViewResolver();</span><br><span class="line">            resolver.setPrefix(<span class="string">"/WEB-INF/views/"</span>);</span><br><span class="line">            resolver.setSuffix(<span class="string">".jsp"</span>);</span><br><span class="line">            resolver.setExposeContextBeansAsAttributes(<span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">return</span> resolver;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureDefaultServletHandling</span><span class="params">(DefaultServletHandlerConfigurer configurer)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            configurer.enable();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>@EnableWebMvc<br>启用Spring MVC</p>
+</li>
+<li><p>@ComponentScan(“spittr.web”)<br>扫描spittr.web包，带@Controller注解的控制器都会成为组件扫描时的候选bean。</p>
+</li>
+<li><p>ViewResolve bean<br>这里的resolver被声明为一个bean，在需要的时候会被自动注入。它会查找jsp文件，在查找的时候，在视图名称上加上特定的前缀和后缀。</p>
+</li>
+<li><p>configureDefaultServletHandling方法<br>要求DispatcherServlet将对静态资源的请求转发到Servlet容器默认的Servlet上，而不是DispatcherServlet本身处理这类请求。</p>
+</li>
+</ul>
+<h2 id="基本的控制器"><a href="#基本的控制器" class="headerlink" title="基本的控制器"></a>基本的控制器</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"home"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>@Controller<br>声明为一个控制器，可以被@ComponentScan扫描到</p>
+</li>
+<li><p>@RequestMapping<br>URL映射，这里表明请求URL为”/“时且HTTP方法为GET的时候返回名称为home的视图，DispatcherDervlet会要求视图解析器将这个逻辑名称解析为实际的视图。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Spittr&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Welcome to spittr&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这是/WEB-INF/views/home.jsp的内容，只有一句Welcome。</p>
+<p>需要工程源码的可以去 <a href="https://github.com/Aifeng1214/spittr" target="_blank" rel="noopener">Spittr</a> 获取。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/深入理解Java的多态/" rel="next" title="深入理解Java的多态">
+                <i class="fa fa-chevron-left"></i> 深入理解Java的多态
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/《Spring实战》阅读笔记——第五章(2)/" rel="prev" title="《Spring实战》阅读笔记——第五章(2)">
+                《Spring实战》阅读笔记——第五章(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Shiba.jpg"
+                alt="ZSY" />
+            
+              <p class="site-author-name" itemprop="name">ZSY</p>
+              <p class="site-description motion-element" itemprop="description">且随疾风前行</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-MVC起步"><span class="nav-number">1.</span> <span class="nav-text">Spring MVC起步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spirng-MVC的请求流程"><span class="nav-number">1.1.</span> <span class="nav-text">Spirng MVC的请求流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建Spring-MVC"><span class="nav-number">1.2.</span> <span class="nav-text">搭建Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SpittrWebAppInitializer类的解析"><span class="nav-number">1.2.1.</span> <span class="nav-text">SpittrWebAppInitializer类的解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Spring-MVC"><span class="nav-number">1.3.</span> <span class="nav-text">启动Spring MVC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的控制器"><span class="nav-number">2.</span> <span class="nav-text">基本的控制器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZSY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
